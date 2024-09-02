@@ -1,63 +1,74 @@
-use lucassc;
-
-
-create table vendedor (
-	id_vendedor int not null primary key,
-	nome varchar (60),
-	tel varchar(25),
-	email varchar(60)
-);
-
-create table cliente (
-	id_cliente int not null primary key,
-	nome varchar (60),
-	tel varchar(25),
-	cpf varchar(20),
-	rua varchar(100),
-	cep varchar(10),
-	cidade varchar(60),
-	uf char(2),
-	nr varchar(15),
-	dt_cadastro date,
-	dt_nascimento date
-);
-
-create table forma_pgto(
-	id_forma int not null primary key,
-	descricao varchar(60),
-	qt int
+CREATE TABLE pessoas (
+    id int not NULL PRIMARY KEY,
+    nome varchar(50) NOT NULL,
+    idade int,
+    email varchar(100),
+    cidade varchar(50),
+    data_nascimento date,
+    sexo char(1),
+    estado varchar(2)
 );
 
 
-create table produto(
-	id_produto int not null primary key,
-	modelo varchar(60),
-	marca varchar (60),
-	imei varchar (60),
-	cor varchar (60),
-	qt int,
-	vl_custo decimal(14,2),
-	vl_venda decimal(14,2)
-);
+use lucasSC;
 
-create table venda(
-	id_venda int not null primary key,
-	dt_venda date,
-	id_vendedor int,
-	id_cliente int,
-	id_forma int,
-	foreign key (id_vendedor) references vendedor(id_vendedor),
-	foreign key (id_cliente) references cliente(id_cliente),
-	foreign key (id_forma) references forma_pgto(id_forma)
-);
+INSERT INTO pessoas (id, nome, idade, email, cidade, data_nascimento, sexo, estado)
+VALUES
+(1,'Ana Silva', 28, 'ana.silva@gmail.com', 'Curitiba', '1996-05-14', 'F', 'PR'),
+(2,'Carlos Lima', 34, 'carlos.lima@icloud.com', 'São Luís', '1990-02-20', 'M', 'MA'),
+(3,'Fernanda Sousa', 25, 'fernanda.sousa@gmail.com', 'Manaus', '1999-07-18', 'F', 'AM'),
+(4,'João Alves', 30, 'joao.alves@outlook.com', 'São Paulo', '1993-01-11', 'M','SP'),
+(5,'Mariana Costa', 27, 'mariana.costa@outlook.com', 'Rio De Janeiro', '1997-03-23', 'F','RJ'),
+(6,'Pedro Rocha', 29, 'pedro.rocha@icloud.com', 'Macapá', '1995-10-08', 'M','AP'),
+(7,'Julia Martins', 32, 'julia.martins@hotmail.com', 'Guarulhos', '1991-12-15', 'F', 'SP'),
+(8,'Lucas Custodio', 26, 'lucas.custtodio98@gmail.com', 'Campo Mourão', '1998-07-04', 'M','PR'),
+(9,'Bianca Ribeiro', 31, 'bianca.ribeiro@gmail.com', 'Ribeirão Preto', '1992-09-12', 'F','SP'),
+(10,'Rafael Brandão', 54, 'rafael.brandao@yahoo.com', 'Maringá', '1970-06-17', 'M','PR'),
+(11,'Danielle Cristina', 28, 'cristinadanielle2@icloud.com', 'São Luís', '1996-03-31', 'F', 'MA'),
+(12,'Alex Ferreira', 25, 'alexferreira99@gmail.com', 'Manaus', '1999-07-18', 'M', 'AM'),
+(13,'Lucas Felipe', 20, 'lucas.felipe32@outlook.com', 'São Paulo', '2004-01-11', 'M','SP'),
+(14,'Maria Silva', 17, 'mariasilva9@outlook.com', 'Rio De Janeiro', '2007-03-23', 'F','RJ'),
+(15,'Pedro Cruz', 80, 'pedro.cruz@icloud.com', 'Recife', '1944-07-08', 'M','PE');
 
-create table itens_ordem(
-	id_venda int not null,
-	id_produto int not null,
-	qt_venda int not null,
-	vl_venda decimal (14,2),
-	primary key (id_venda, id_produto),
-	foreign key (id_venda) references venda(id_venda),
-	foreign key (id_produto) references produto(id_produto)
-	
-);
+
+
+
+/* Usando operador > */
+select * from pessoas
+where idade > 20
+
+/* Usando operador < */
+select * from pessoas
+where idade < 20
+
+/* Usando operador <= */
+select * from pessoas
+where idade <= 20
+
+/* Usando operador > < */
+select * from pessoas
+where idade > 20 and idade < 30
+
+/* Usando operador = */
+select * from pessoas
+where idade = 80
+
+/* Usando operador >= */
+select * from pessoas
+where idade >= 25 and estado ='PR'
+
+/* Usando OR */
+select * from pessoas
+where idade = 20 or estado ='PR'
+
+/* Usando NOT */
+select * from pessoas
+where not estado = 'SP'
+
+/* Usando LIKE */
+select * from pessoas
+where nome like '%danielle%'
+
+/* Usando operador =! */
+select * from pessoas
+where idade != 25
