@@ -1,3 +1,4 @@
+
 use lucassc;
 
 CREATE TABLE enderecos (
@@ -36,5 +37,3 @@ SELECT p.id, p.nome, p.idade, p.email, p.cidade, p.data_nascimento, p.sexo, p.es
        e.rua, e.numero, e.complemento, e.bairro
 FROM pessoas p
 INNER JOIN enderecos e ON p.id = e.pessoa_id;
-
-
