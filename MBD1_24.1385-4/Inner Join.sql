@@ -29,7 +29,7 @@ VALUES
 (12, 12, 'Avenida L', '909', 'Casa 2', 'Zona Norte'),
 (13, 13, 'Rua M', '1010', '', 'Vila Nova'),
 (14, 14, 'Rua N', '1111', '', 'Centro'),
-(15, 15, 'Rua O', '1212', '', 'Boa Vista');
+(15, 15, 'Rua O', '112', '', 'Boa Vista');
 
 
 
